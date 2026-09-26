@@ -12,47 +12,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  package:
-    name: Package ${{ matrix.platform }} ${{ matrix.arch }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - { runner: macos-15, platform: mac, arch: arm64 }
-          - { runner: macos-15-intel, platform: mac, arch: x64 }
-          - { runner: windows-2025, platform: win, arch: x64 }
-          - { runner: windows-11-arm, platform: win, arch: arm64 }
-          - { runner: ubuntu-24.04, platform: linux, arch: x64 }
-          - { runner: ubuntu-24.04-arm, platform: linux, arch: arm64 }
-    runs-on: ${{ matrix.runner }}
-    timeout-minutes: 45
-    env:
-      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+  verify:
+    name: Check the tag matches the version
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-          cache: npm
-      - name: Check release version and native architecture
-        shell: bash
-        env:
+      - env:
           RELEASE_TAG: ${{ github.ref_name }}
-          RELEASE_ARCH: ${{ matrix.arch }}
-        run: |
-          node -e 'const p = require("./package.json"); if (process.env.RELEASE_TAG !== "v" + p.version || process.arch !== process.env.RELEASE_ARCH) process.exit(1)'
-      - run: npm ci
-      - run: npm run build
-      - run: npm run package:${{ matrix.platform }} -- --${{ matrix.arch }}
-      - uses: actions/upload-artifact@v7
-        with:
-          name: soul-${{ matrix.platform }}-${{ matrix.arch }}
-          path: |
-            release/*.dmg
-            release/*.exe
-            release/*.AppImage
-          if-no-files-found: error
-          retention-days: 7
+        run: node -e 'const { version } = require("./package.json"); if (process.env.RELEASE_TAG !== `v${version}`) { console.error(`Tag ${process.env.RELEASE_TAG} does not match version ${version}.`); process.exit(1); }'
+
+  package:
+    needs: verify
+    uses: ./.github/workflows/package.yml
 
   publish:
     needs: package
@@ -72,14 +44,11 @@ jobs:
         run: |
           cd release
           version="${GITHUB_REF_NAME#v}"
-          for arch in arm64 x64; do
-            test -s "Soul-${version}-mac-${arch}.dmg"
-            test -s "Soul-${version}-win-${arch}.exe"
-            test -s "Soul-${version}-linux-${arch}.AppImage"
-          done
-          sha256sum -- *.dmg *.exe *.AppImage > SHA256SUMS
+          test "$(ls -- Soul-"${version}"-win-*.exe | wc -l)" -eq 2
+          test "$(ls -- Soul-"${version}"-linux-*.AppImage | wc -l)" -eq 2
+          sha256sum -- *.exe *.AppImage > SHA256SUMS
           sha256sum --check SHA256SUMS
-      - name: Publish complete release
+      - name: Publish the release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}

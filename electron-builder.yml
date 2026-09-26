@@ -16,7 +16,7 @@ files:
   - "!node_modules/**/{README,README.md,CHANGELOG.md,*.d.ts,*.d.mts,*.map,tsconfig.json}"
 asarUnpack:
   - "**/node_modules/better-sqlite3/**"
-npmRebuild: true
+npmRebuild: false
 mac:
   category: public.app-category.productivity
   target: dmg
@@ -28,6 +28,8 @@ mac:
 win:
   target: nsis
   icon: resources/icon.png
+  files:
+    - "!node_modules/better-sqlite3/prebuilds/{darwin,linux}*"
 nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
@@ -35,4 +37,6 @@ linux:
   target: AppImage
   icon: resources/icon.png
   category: Office
+  files:
+    - "!node_modules/better-sqlite3/prebuilds/{darwin,win32}*"
 publish: null

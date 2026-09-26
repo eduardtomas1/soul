@@ -95,8 +95,9 @@ Set `SOUL_DATA_DIR` to run against a throwaway data directory.
 
 `better-sqlite3` ships prebuilt binaries for every release platform, but npm still
 tries to compile it. On Windows without Visual Studio Build Tools, install with
-`npm ci --ignore-scripts`, then run `node node_modules/electron/install.js`, and
-package locally with `-c.npmRebuild=false`.
+`npm ci --ignore-scripts`, then run `node node_modules/electron/install.js`.
+Packaging never rebuilds native modules: better-sqlite3 ships Node-API binaries
+that work under Electron, and each installer keeps only its own platform's.
 
 ## Releases
 
@@ -104,7 +105,9 @@ Keep `package.json` and `package-lock.json` versions aligned, run `npm run check
 build and launch a package with disposable data, and update `docs/release-notes.md`.
 Merge the release source before pushing its matching `v<version>` tag. Tags and
 published assets are immutable; use a new version for a published correction.
-The release workflow packages each architecture on its native OS and CPU, then
-publishes all six installers with `SHA256SUMS`. Failed builds publish nothing.
-Mac builds use ad-hoc signing without notarization; Windows builds are unsigned.
+Main is protected: changes land through pull requests once the checks pass, and
+every pull request also builds the installers. The release workflow packages
+Windows and Linux, x64 and arm64, each on its native runner, then publishes the
+four installers with `SHA256SUMS`. Failed builds publish nothing. Windows builds
+are unsigned; Mac builds are not part of releases yet.
 Provider CLIs are discovered on the user's machine and are not bundled.

@@ -17,7 +17,7 @@
 
 ![Soul's overview: key figures with their trends, today's routines and habits, the journal, measures and everything logged today](docs/screenshots/soul-today.png)
 
-Soul is a free desktop app for one person. It runs on Mac, Windows and Linux, keeps everything on your own computer and needs no account. Think of it as a small back office for your own life: clear figures, tidy tables and charts that show how things are going.
+Soul is a free desktop app for one person. It runs on Windows and Linux, keeps everything on your own computer and needs no account. Think of it as a small back office for your own life: clear figures, tidy tables and charts that show how things are going.
 
 ## An overview of the day
 
@@ -27,7 +27,7 @@ Forgot to log yesterday? Step back a day, or pick any date, and fill it in exact
 
 ## Log anything in seconds
 
-Press Ctrl+L (⌘L on a Mac) from anywhere, or the Log button, to open a small window for an expense, income, habits, routine steps, measures or a journal entry, on today or any earlier day. Soul remembers what you usually log. Type "coffee" and the category, account and last amount are filled in, so Enter is often all it takes. Ctrl+Enter logs and leaves the window open for the next one.
+Press Ctrl+L from anywhere, or the Log button, to open a small window for an expense, income, habits, routine steps, measures or a journal entry, on today or any earlier day. Soul remembers what you usually log. Type "coffee" and the category, account and last amount are filled in, so Enter is often all it takes. Ctrl+Enter logs and leaves the window open for the next one.
 
 ![The Log window with an expense: the category and amount filled in from last time](docs/screenshots/soul-log.png)
 
@@ -109,17 +109,14 @@ Download Soul from [Releases](https://github.com/eduardtomas1/soul/releases/late
 
 | Your computer | File |
 | --- | --- |
-| Mac with Apple silicon (M1 or newer) | `mac-arm64.dmg` |
-| Mac with an Intel processor | `mac-x64.dmg` |
 | Windows PC | `win-x64.exe` |
 | Windows on ARM (for example a Surface Pro X or a Snapdragon laptop) | `win-arm64.exe` |
 | Linux | `linux-x64.AppImage`, or `linux-arm64.AppImage` on ARM |
 
-- **Mac:** open the disk image and drag Soul to Applications.
 - **Windows:** run the installer.
 - **Linux:** make the AppImage executable and open it.
 
-These early versions are not yet notarized by Apple or signed for Windows, so the first launch shows a warning. On a Mac, go to System Settings, then Privacy & Security, and choose Open Anyway. On Windows, choose More info, then Run anyway. The [installation notes](docs/release-notes.md) explain this in more detail and show how to check that your download is genuine.
+This first version is for Windows and Linux. It is not signed for Windows yet, so the first launch shows a warning: choose More info, then Run anyway. The [installation notes](docs/release-notes.md) explain this in more detail and show how to check that your download is genuine.
 
 ## Good to know
 

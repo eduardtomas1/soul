@@ -30,3 +30,10 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm run check
+
+  installers:
+    name: Installers
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/package.yml
+    with:
+      retention-days: 3
