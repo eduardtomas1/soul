@@ -1,0 +1,66 @@
+{
+  "name": "soul",
+  "productName": "Soul",
+  "version": "0.0.1",
+  "description": "A calm desktop companion for your routines, habits and money.",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Eduard Tomas"
+  },
+  "type": "module",
+  "main": "./out/main/index.js",
+  "engines": {
+    "node": ">=22.13 <23"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "npm run typecheck && electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "lint": "oxlint src scripts tests --react-plugin --deny-warnings",
+    "test": "vitest run",
+    "check": "npm run lint && npm run typecheck && npm run test",
+    "screenshots": "npm run build && node scripts/capture-readme-screenshots.mjs",
+    "package:dir": "electron-builder --dir --publish never",
+    "package:mac": "electron-builder --mac --publish never",
+    "package:win": "electron-builder --win --publish never",
+    "package:linux": "electron-builder --linux --publish never",
+    "dist:mac": "npm run build && npm run package:mac",
+    "dist:win": "npm run build && npm run package:win",
+    "dist:linux": "npm run build && npm run package:linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.281",
+    "@anthropic-ai/sdk": "^0.126.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "better-sqlite3": "^13.0.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "clsx": "^2.1.1",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "happy-dom": "^20.14.5",
+    "oxlint": "^1.85.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.6",
+    "vitest": "^5.0.1"
+  }
+}

@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+
+# Build and package output
+out/
+dist/
+release/
+coverage/
+test-results/
+playwright-report/
+.vite/
+.electron-vite/
+*.tsbuildinfo
+
+# Local runtime state
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite3
+*.soul
+.soul/
+soul-data/
+
+# Local credentials and configuration, never committed
+.env
+.env.*
+!.env.example
+soul.local.json
+*.local.json
+client_secret*.json
+google-oauth*.json
+*.token
+*.key
+*.pem
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+electron-builder.env
+.npmrc
+
+# Logs and profiles
+*.log
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+npm-debug.log*
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local tool state
+.claude/
+.cache/
+.eslintcache
+
+# Temporary files
+*.tmp
+*.swp
+*.swo

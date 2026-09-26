@@ -1,0 +1,38 @@
+appId: dev.eduardtomas.soul
+productName: Soul
+copyright: Copyright © 2026 Eduard Tomas
+artifactName: Soul-${version}-${os}-${arch}.${ext}
+directories:
+  buildResources: resources
+  output: release
+files:
+  - out/**
+  - package.json
+  - "!**/*.map"
+  - "!node_modules/@anthropic-ai/claude-agent-sdk-*/**"
+  - "!node_modules/better-sqlite3/deps/**"
+  - "!node_modules/better-sqlite3/src/**"
+  - "!node_modules/better-sqlite3/prebuilds/*musl*"
+  - "!node_modules/**/{README,README.md,CHANGELOG.md,*.d.ts,*.d.mts,*.map,tsconfig.json}"
+asarUnpack:
+  - "**/node_modules/better-sqlite3/**"
+npmRebuild: true
+mac:
+  category: public.app-category.productivity
+  target: dmg
+  icon: resources/icon.png
+  identity: "-"
+  hardenedRuntime: false
+  notarize: false
+  gatekeeperAssess: false
+win:
+  target: nsis
+  icon: resources/icon.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+linux:
+  target: AppImage
+  icon: resources/icon.png
+  category: Office
+publish: null

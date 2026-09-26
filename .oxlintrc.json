@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": ["out/**", "release/**", "dist/**"],
+  "rules": {
+    "no-debugger": "error",
+    "no-unused-vars": "error",
+    "react/exhaustive-deps": "error",
+    "react/rules-of-hooks": "error"
+  }
+}
