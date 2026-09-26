@@ -111,12 +111,12 @@ Download Soul from [Releases](https://github.com/eduardtomas1/soul/releases/late
 | --- | --- |
 | Windows PC | `win-x64.exe` |
 | Windows on ARM (for example a Surface Pro X or a Snapdragon laptop) | `win-arm64.exe` |
-| Linux | `linux-x64.AppImage`, or `linux-arm64.AppImage` on ARM |
+| Linux | `linux-x86_64.AppImage`, or `linux-arm64.AppImage` on ARM |
 
 - **Windows:** run the installer.
 - **Linux:** make the AppImage executable and open it.
 
-This first version is for Windows and Linux. It is not signed for Windows yet, so the first launch shows a warning: choose More info, then Run anyway. The [installation notes](docs/release-notes.md) explain this in more detail and show how to check that your download is genuine.
+This first version is for Windows and Linux. It is not signed for Windows yet, so the first launch shows a warning: choose More info, then Run anyway. The [installation notes](docs/release-notes.md) explain this in more detail, help when the AppImage doesn't start, and show how to check that your download is genuine.
 
 ## Good to know
 
