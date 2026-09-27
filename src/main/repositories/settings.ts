@@ -10,7 +10,6 @@ export interface SettingsRepository {
 
 const SETTINGS_KEY = "settings";
 
-// Soul 0.0.1 offered a "natural" theme; the slate theme took its place.
 function renameRetiredTheme(stored: unknown): unknown {
   return typeof stored === "object" && stored !== null && "theme" in stored && stored.theme === "natural" ? { ...stored, theme: "slate" } : stored;
 }
