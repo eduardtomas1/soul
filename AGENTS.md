@@ -66,10 +66,11 @@ The README is for people who use the app and stays non-technical.
   motion setting. No polling loops in either process.
 - Icons come from Phosphor. Stored icon keys map to Phosphor icons in
   `src/renderer/src/lib/glyphs.ts`; the picker hides keys that share an icon.
-- Themes: light, dark and natural (warm paper, walnut text, forest green and a
-  sand sidebar). Every colour is a token in `styles/app.css`; charts use
+- Themes: light, dark and slate (icy pages, a dusk-blue sidebar and sky-blue
+  highlights). Every colour is a token in `styles/app.css`; charts use
   `--signal` and `--series-2`, a pair checked for colour-blind separation and
-  contrast in each theme.
+  contrast in each theme. Text in the signal colour uses `--link`: marks need
+  3:1 contrast, text needs 4.5:1.
 - Design: an ink sidebar, a light grey canvas with white bordered panels,
   IBM Plex Sans (bundled), sentence-case text with small capitals only for
   table headers and figure labels, tables (`data-table`) for records, and one

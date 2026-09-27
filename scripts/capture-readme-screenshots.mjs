@@ -79,7 +79,7 @@ try {
 
   await capture("soul-today", { theme: "light" });
   await capture("soul-today-dark", { theme: "dark" });
-  await capture("soul-today-natural", { theme: "natural" });
+  await capture("soul-today-slate", { theme: "slate" });
   await call("settings.update", { theme: "light" });
   await page.keyboard.press(process.platform === "darwin" ? "Meta+L" : "Control+L");
   await page.getByPlaceholder("Coffee, groceries, taxi…").fill("Coffee");

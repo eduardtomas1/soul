@@ -65,7 +65,7 @@ export function MonthCalendar({ month, days, selected, today, onSelect, onMonth 
                   )}
                   style={{ animationDelay: `${Math.min(index * 10, 360)}ms`, background: inMonth && !future ? moodBackground(day?.mood ?? null) : undefined }}
                 >
-                  <span className={clsx("text-[12px] leading-none font-semibold tabular-nums", date === today && "text-signal")}>{Number(date.slice(8))}</span>
+                  <span className={clsx("text-[12px] leading-none font-semibold tabular-nums", date === today && "text-link")}>{Number(date.slice(8))}</span>
                   {day?.hasNote && <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-text" aria-label="Has a note" />}
                   {ratio !== null && (
                     <span className="mt-auto h-[3px] w-full overflow-hidden rounded-full bg-[color-mix(in_oklab,var(--text)_12%,transparent)]">

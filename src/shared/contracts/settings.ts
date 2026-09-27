@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { providerIdSchema } from "./assistant";
 
-export const themeSchema = z.enum(["system", "light", "dark", "natural"]);
+export const themeSchema = z.enum(["system", "light", "dark", "slate"]);
 export type Theme = z.infer<typeof themeSchema>;
 
 export const settingsSchema = z.object({

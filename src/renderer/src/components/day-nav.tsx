@@ -50,7 +50,7 @@ export function DayNav({ date, today, onChange, className }: { date: IsoDate; to
         </button>
       </div>
       {date !== today && (
-        <button type="button" onClick={() => onChange(today)} className="fade h-9 rounded-[7px] px-3 text-[12.5px] font-medium text-signal transition-colors hover:bg-signal-soft">
+        <button type="button" onClick={() => onChange(today)} className="fade h-9 rounded-[7px] px-3 text-[12.5px] font-medium text-link transition-colors hover:bg-signal-soft">
           Back to today
         </button>
       )}

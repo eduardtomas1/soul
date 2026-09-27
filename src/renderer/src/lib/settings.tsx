@@ -12,7 +12,7 @@ const SettingsContext = createContext<SettingsContextValue>({ settings: DEFAULT_
 
 function applyDocumentTheme(settings: Settings, systemDark: boolean): void {
   const dark = settings.theme === "dark" || (settings.theme === "system" && systemDark);
-  document.documentElement.dataset.theme = settings.theme === "natural" ? "natural" : dark ? "dark" : "light";
+  document.documentElement.dataset.theme = settings.theme === "slate" ? "slate" : dark ? "dark" : "light";
   document.documentElement.dataset.motion = settings.reduceMotion === "always" ? "reduced" : "system";
 }
 

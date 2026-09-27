@@ -10,6 +10,11 @@ export interface SettingsRepository {
 
 const SETTINGS_KEY = "settings";
 
+// Soul 0.0.1 offered a "natural" theme; the slate theme took its place.
+function renameRetiredTheme(stored: unknown): unknown {
+  return typeof stored === "object" && stored !== null && "theme" in stored && stored.theme === "natural" ? { ...stored, theme: "slate" } : stored;
+}
+
 export function createSettingsRepository(database: SoulDatabase): SettingsRepository {
   const select = database.prepare<[string], { value: string }>("SELECT value FROM settings WHERE key = ?");
   const upsert = database.prepare<[string, string]>(
@@ -20,7 +25,7 @@ export function createSettingsRepository(database: SoulDatabase): SettingsReposi
   function get(): Settings {
     const row = select.get(SETTINGS_KEY);
     if (!row) return DEFAULT_SETTINGS;
-    const parsed = settingsSchema.partial().safeParse(JSON.parse(row.value));
+    const parsed = settingsSchema.partial().safeParse(renameRetiredTheme(JSON.parse(row.value)));
     if (!parsed.success) return DEFAULT_SETTINGS;
     const merged: Record<string, unknown> = { ...DEFAULT_SETTINGS };
     for (const [key, value] of Object.entries(parsed.data)) if (value !== undefined) merged[key] = value;
