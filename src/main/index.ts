@@ -152,7 +152,7 @@ async function start(): Promise<void> {
 }
 
 function applyTheme(theme: Theme): void {
-  nativeTheme.themeSource = theme === "natural" ? "light" : theme;
+  nativeTheme.themeSource = theme === "slate" ? "light" : theme;
 }
 
 function applyLoginItem(enabled: boolean): void {

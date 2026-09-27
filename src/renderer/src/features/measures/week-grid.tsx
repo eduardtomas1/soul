@@ -18,7 +18,7 @@ export function WeekGrid({ measures, entries, today }: { measures: readonly Meas
         <thead>
           <tr>
             <th>Measure</th>
-            {days.map((day, index) => <th key={day} className={clsx("num", COLUMN_VISIBILITY[index], day === today && "text-signal")}>{day === today ? "Today" : formatWeekdayDay(day)}</th>)}
+            {days.map((day, index) => <th key={day} className={clsx("num", COLUMN_VISIBILITY[index], day === today && "text-link")}>{day === today ? "Today" : formatWeekdayDay(day)}</th>)}
           </tr>
         </thead>
         <tbody>

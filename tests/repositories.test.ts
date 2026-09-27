@@ -171,6 +171,16 @@ describe("settings", () => {
     database.close();
   });
 
+  it("moves the retired natural theme to slate and keeps the other settings", () => {
+    const database = openInMemoryDatabase();
+    const settings = createSettingsRepository(database);
+    settings.update({ remindersEnabled: false, onboardingDone: true });
+    database.prepare("UPDATE settings SET value = json_set(value, '$.theme', 'natural') WHERE key = 'settings'").run();
+    expect(settings.get()).toEqual({ ...DEFAULT_SETTINGS, theme: "slate", remindersEnabled: false, onboardingDone: true });
+    expect(settings.update({ launchAtLogin: true }).theme).toBe("slate");
+    database.close();
+  });
+
   it("only accepts model names that are safe to pass to a provider", () => {
     expect(settingsPatchSchema.safeParse({ assistantModel: "claude-opus-5-5" }).success).toBe(true);
     expect(settingsPatchSchema.safeParse({ assistantModel: "openai/gpt-5.5:high" }).success).toBe(true);

@@ -1,4 +1,4 @@
-import { ArrowRight, DownloadSimple, Gauge, Leaf, ListChecks, MagnifyingGlass, Moon, NotePencil, Plus, Receipt, Repeat, TrendUp, type Icon } from "@phosphor-icons/react";
+import { ArrowRight, DownloadSimple, Gauge, ListChecks, MagnifyingGlass, Moon, NotePencil, Palette, Plus, Receipt, Repeat, TrendUp, type Icon } from "@phosphor-icons/react";
 import { clsx } from "clsx";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -48,7 +48,7 @@ export function CommandPalette({ onClose, onQuickLog }: { onClose: () => void; o
     { id: "new-transaction", label: "Add transaction", group: "Create", keywords: "expense income money", icon: Plus, run: () => navigate({ view: "finances", tab: "transactions", focusId: "new" }) },
     { id: "new-recurring", label: "Add recurring payment", group: "Create", keywords: "subscription bill", icon: Plus, run: () => navigate({ view: "finances", tab: "recurring", focusId: "new" }) },
     { id: "theme", label: settings.theme === "dark" ? "Switch to light theme" : "Switch to dark theme", group: "Actions", keywords: "appearance", icon: Moon, run: () => update({ theme: settings.theme === "dark" ? "light" : "dark" }) },
-    { id: "theme-natural", label: "Switch to the natural theme", group: "Actions", keywords: "appearance brown green calm", icon: Leaf, run: () => update({ theme: "natural" }) },
+    { id: "theme-slate", label: "Switch to the slate theme", group: "Actions", keywords: "appearance blue calm", icon: Palette, run: () => update({ theme: "slate" }) },
     {
       id: "export",
       label: "Export a backup file",

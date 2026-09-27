@@ -95,13 +95,13 @@ If you want a copy somewhere safe, connect your own Google Drive. Soul keeps exa
 
 Soul never sees your Google password. You connect Drive through a Google project you create yourself, and the Backup settings walk you through it. Soul only asks Google for permission to manage the files Soul itself created. The connection details and your passphrase are protected by your computer's keychain and are never included in a backup.
 
-## Light, dark or natural
+## Light, dark or slate
 
-Soul follows your system's appearance, or you choose. Besides light and dark there is a natural theme: warm paper, walnut text and forest green, calm on the eyes. Numbers count up, charts draw in and panels slide into place. If you prefer a still screen, turn motion off in Settings. Soul also follows your system's reduced-motion setting.
+Soul follows your system's appearance, or you choose. Besides light and dark there is a slate theme: icy-blue pages, a dusk-blue sidebar and sky-blue highlights, calm on the eyes. Numbers count up, charts draw in and panels slide into place. If you prefer a still screen, turn motion off in Settings. Soul also follows your system's reduced-motion setting.
 
 ![The same overview in the dark theme](docs/screenshots/soul-today-dark.png)
 
-![The overview in the natural theme, with a sand sidebar and green accents](docs/screenshots/soul-today-natural.png)
+![The overview in the slate theme, with a dusk-blue sidebar and sky-blue accents](docs/screenshots/soul-today-slate.png)
 
 ## Getting Soul
 
